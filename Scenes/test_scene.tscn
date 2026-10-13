@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://gluffcg3dwi"]
+
+[ext_resource type="PackedScene" uid="uid://dev5hdp1u462p" path="res://Scenes/player.tscn" id="1_3dogw"]
+[ext_resource type="Script" uid="uid://chircwv08qb5" path="res://Scripts/test_scene.gd" id="1_r5l72"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3dogw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_r5l72"]
+sky_material = SubResource("ProceduralSkyMaterial_3dogw")
+
+[sub_resource type="Environment" id="Environment_50ct6"]
+background_mode = 2
+sky = SubResource("Sky_r5l72")
+
+[node name="Node3D" type="Node3D" unique_id=369478793]
+script = ExtResource("1_r5l72")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2125930833]
+environment = SubResource("Environment_50ct6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=63870877]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=267076674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7879639, -0.35205078, -3.3394165)
+use_collision = true
+size = Vector3(16, 0.29589844, 34)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=713540027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5066414, 0.69085693, 1.0176392)
+size = Vector3(1, 2.3817139, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1849142361]
+transform = Transform3D(0.44288152, 0, 0.89658016, 0, 1, 0, -0.89658016, 0, 0.44288152, -0.9509907, 0.69085693, -7.052265)
+size = Vector3(1, 2.3817139, 8)
+
+[node name="CharacterBody3D" parent="." unique_id=1794131356 instance=ExtResource("1_3dogw")]
+transform = Transform3D(0.25881907, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881907, -2, 0, 0)
+
+[editable path="CharacterBody3D"]

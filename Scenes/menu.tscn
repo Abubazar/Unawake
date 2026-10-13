@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bjl0oswwsevlq"]
+
+[ext_resource type="FontFile" uid="uid://b44drulw4svl" path="res://Assets/MotionControl-Bold.otf" id="1_1rerr"]
+[ext_resource type="Shader" uid="uid://vbrgmihn6xqb" path="res://Scenes/vhs.gdshader" id="1_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xold"]
+font = ExtResource("1_1rerr")
+font_size = 140
+outline_size = 24
+outline_color = Color(0.88, 0, 0.014666443, 0.42745098)
+
+[sub_resource type="Theme" id="Theme_obyia"]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_1rerr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhh6f"]
+shader = ExtResource("1_xhh6f")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=676748097]
+
+[node name="Control" type="Control" parent="." unique_id=277313654]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control" unique_id=606042844]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.5
+offset_top = 90.0
+offset_right = 217.5
+offset_bottom = 231.0
+grow_horizontal = 2
+text = "UnAwake"
+label_settings = SubResource("LabelSettings_8xold")
+
+[node name="list" type="VBoxContainer" parent="Control" unique_id=1633166407]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -155.5
+offset_top = -368.0
+offset_right = 155.5
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="Control/list" unique_id=1069071239]
+layout_mode = 2
+theme = SubResource("Theme_obyia")
+text = "Play the Video.. Game"
+
+[node name="Button2" type="Button" parent="Control/list" unique_id=2020214530]
+layout_mode = 2
+theme = SubResource("Theme_obyia")
+text = "Whimp out and exit"
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=2024698957]
+material = SubResource("ShaderMaterial_xhh6f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
