@@ -1,12 +1,15 @@
 extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera
+@onready var sub_camera: Camera3D = $Camera/SubViewport/sub_camera
 @onready var torch: Node3D = $Camera/torch
 
 @onready var bar_3: ColorRect = $Camera/Control/container/bar3
 @onready var bar_2: ColorRect = $Camera/Control/container/bar2
 @onready var bar_1: ColorRect = $Camera/Control/container/bar1
 
+@onready var sub_viewport: SubViewport = $Camera/SubViewport
+@onready var maincolor: ColorRect = $Camera/hud/Control/maincolor
 
 const SPEED = 1.8
 
@@ -21,11 +24,19 @@ var torch_battery = 100
 const BOB_FREQ = 5.4
 const BOB_AMP = 0.09
 
+@onready var maincolor_2: TextureRect = $Camera/hud/Control/maincolor2
 
+func get_average_color(texture: ViewportTexture) -> Color:
+	var image = texture.get_image()
+	maincolor_2.texture = texture
+	image.resize(1,1,Image.INTERPOLATE_LANCZOS)
+	print(image.get_pixel(0,0))
+	return image.get_pixel(0,0)
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	trap_mouse = true
+	$MeshInstance3D.hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -41,6 +52,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	sub_camera.global_position = camera.global_position
+	sub_camera.global_rotation = camera.global_rotation
+	maincolor.color = get_average_color(sub_viewport.get_texture())
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 

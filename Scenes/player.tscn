@@ -44,9 +44,6 @@ shape = SubResource("CapsuleShape3D_8xold")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8xold")
 
-[node name="object_place" type="Marker3D" parent="." unique_id=600555630]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5575702, 1.2280372, -0.72492874)
-
 [node name="Camera" type="Camera3D" parent="." unique_id=2042293720]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6994325, 0)
 
@@ -87,6 +84,21 @@ grow_vertical = 2
 rotation = 0.7853982
 mouse_filter = 2
 color = Color(0.23137255, 0.23137255, 0.23137255, 0.37254903)
+
+[node name="maincolor2" type="TextureRect" parent="Camera/hud/Control" unique_id=120360776]
+layout_mode = 0
+offset_left = 25.285
+offset_top = 50.0
+offset_right = 118.285
+offset_bottom = 143.0
+scale = Vector2(0.01, 0.01)
+
+[node name="maincolor" type="ColorRect" parent="Camera/hud/Control" unique_id=1717963113]
+layout_mode = 0
+offset_left = 25.285
+offset_top = 150.0
+offset_right = 118.285
+offset_bottom = 243.0
 
 [node name="Control" type="Control" parent="Camera" unique_id=1800062090]
 layout_mode = 3
@@ -167,15 +179,22 @@ script = ExtResource("3_6t5aa")
 visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera/torch" unique_id=701435791]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53121054, -0.36900127, -0.24088615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15671569, -0.2676823, -0.24088615)
 light_energy = 0.4
 shadow_enabled = true
-spot_range = 5.7853436
-spot_angle = 23.906246
+spot_range = 8.0
+spot_angle = 30.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Camera/torch" unique_id=1521055669]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53121054, -0.36900127, -0.24088615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15671569, -0.2676823, -0.24088615)
 light_energy = 0.4
 shadow_enabled = true
-spot_range = 5.7853436
+spot_range = 8.0
 spot_angle = 5.888153
+
+[node name="SubViewport" type="SubViewport" parent="Camera" unique_id=1830598391]
+size = Vector2i(200, 200)
+
+[node name="sub_camera" type="Camera3D" parent="Camera/SubViewport" unique_id=417891154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6994325, 0)
+fov = 45.604702

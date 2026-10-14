@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cf7j0ursfkan7"]
+
+[ext_resource type="Script" uid="uid://bd7wm7wj2duo1" path="res://character_body_3d.gd" id="1_a202f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a0tk4"]
+sky_material = SubResource("ProceduralSkyMaterial_noarx")
+
+[sub_resource type="Environment" id="Environment_r3fl7"]
+background_mode = 2
+sky = SubResource("Sky_a0tk4")
+
+[sub_resource type="Curve3D" id="Curve3D_a202f"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6.9125967, -0.19482422, -14.228525, 0, 0, 0, 0, 0, 0, 12.998046, -0.19482517, -4.58321, 0, 0, 0, 0, 0, 0, 10.683042, -0.19482422, 4.9299374, 0, 0, 0, 0, 0, 0, 1.9647369, -0.19482422, 9.205757, 0, 0, 0, 0, 0, 0, -6.1402035, -0.19482517, 8.51205, 0, 0, 0, 0, 0, 0, -12.599121, -0.19482231, 1.7615657, 0, 0, 0, 0, 0, 0, -11.929998, -0.19482231, -3.9661021),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xold"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8xold"]
+
+[node name="Node3D" type="Node3D" unique_id=513902742]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1654116940]
+environment = SubResource("Environment_r3fl7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1176323509]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1244297189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1159363, -0.3474121, -2.2584229)
+use_collision = true
+size = Vector3(56.97467, 0.30517578, 35.16626)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1428747420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4119568, 0.84033203, -3.4930596)
+use_collision = true
+size = Vector3(6.68219, 2.680664, 1)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1059722673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4119568, 0.84033203, -9.114206)
+use_collision = true
+sides = 10
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1167775391]
+transform = Transform3D(0.88783234, -0.40401074, 0.22029306, 0, 0.4787241, 0.8779654, -0.46016705, -0.77948606, 0.42502674, 10.717825, 14.519338, 5.7198844)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=156941257]
+curve = SubResource("Curve3D_a202f")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=420586797]
+transform = Transform3D(-0.8457366, 4.4620347e-08, -0.5335945, -1.7763513e-15, 1, 8.3621664e-08, 0.5335945, 7.0722365e-08, -0.8457366, 6.9125967, -0.19482422, -14.228525)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Path3D/PathFollow3D" unique_id=1795351316]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 7.1054274e-15, 2.9802322e-08, 0, 1, 0, 1.1320181, 0)
+script = ExtResource("1_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Path3D/PathFollow3D/CharacterBody3D" unique_id=1098478233]
+shape = SubResource("CapsuleShape3D_8xold")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D/CharacterBody3D" unique_id=625435580]
+mesh = SubResource("CapsuleMesh_8xold")

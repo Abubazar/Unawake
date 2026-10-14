@@ -1,5 +1,8 @@
 [gd_scene format=4 uid="uid://chrx3g7tje3qe"]
 
+[ext_resource type="Script" uid="uid://cjmpet85kgqo2" path="res://Scripts/tom.gd" id="1_3gh2l"]
+[ext_resource type="Material" uid="uid://h3xs1sfb7863" path="res://Assets/tom_cape.tres" id="2_xv0qx"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stjld"]
 resource_name = "Face"
 vertex_color_use_as_albedo = true
@@ -80,11 +83,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0ygnl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieupa"]
-cull_mode = 2
-albedo_color = Color(0.14406255, 0.14406255, 0.14406255, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xold"]
+radius = 0.33544922
+height = 1.5996094
 
-[node name="tom" type="Node3D" unique_id=87374322]
+[node name="tom" type="Area3D" unique_id=1341020291]
+script = ExtResource("1_3gh2l")
 
 [node name="Face_001" type="MeshInstance3D" parent="." unique_id=1813781693]
 transform = Transform3D(0.12521417, 0, 0, 0, 0.12521417, 9.453407e-09, 0, -9.453407e-09, 0.12521417, 0, 1.497, 0.31)
@@ -93,4 +97,12 @@ mesh = SubResource("ArrayMesh_k0duw")
 [node name="Floating Cape 2" type="MeshInstance3D" parent="." unique_id=744924569]
 transform = Transform3D(66.95255, 0, 0, 0, -1.4363294e-05, 66.952545, 0, -120.48804, -7.981366e-06, -0.021, 0, 0)
 mesh = SubResource("ArrayMesh_t5i7w")
-surface_material_override/0 = SubResource("StandardMaterial3D_ieupa")
+surface_material_override/0 = ExtResource("2_xv0qx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1945606909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8900501, 0.14215916)
+shape = SubResource("CapsuleShape3D_8xold")
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=641807358]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, 0)
+target_position = Vector3(0, -3, 0)

@@ -1,7 +1,6 @@
 extends RayCast3D
 
 @onready var character_body_3d: CharacterBody3D = $"../.."
-@onready var object_place: Marker3D = $"../../object_place"
 @onready var point: ColorRect = $"../hud/Control/point"
 
 var collision_body = null
