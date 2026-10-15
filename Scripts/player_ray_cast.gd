@@ -4,9 +4,14 @@ extends RayCast3D
 @onready var point: ColorRect = $"../hud/Control/point"
 
 var collision_body = null
+var scared = false
 
 func _process(delta: float) -> void:
 	if is_colliding():
+		if get_collider().name == "tom" and not scared:
+			character_body_3d.jumpscare()
+			scared = true
+		
 		if get_collider().is_in_group("pickable"):
 			point.color = Color(0.0, 1.0, 0.0, 1.0)
 			if Input.is_action_just_pressed("pick"):
