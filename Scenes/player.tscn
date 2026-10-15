@@ -4,6 +4,13 @@
 [ext_resource type="Shader" uid="uid://dwt1mw2iaceyt" path="res://Scripts/ctr.gdshader" id="2_cvnsp"]
 [ext_resource type="Script" uid="uid://dah74bcdqsmjx" path="res://Scripts/player_ray_cast.gd" id="3_6t5aa"]
 [ext_resource type="FontFile" uid="uid://b44drulw4svl" path="res://Assets/MotionControl-Bold.otf" id="3_vgqql"]
+[ext_resource type="AudioStream" uid="uid://c7k4ax5vonn2i" path="res://Audio/heartbeat.mp3" id="5_8erm5"]
+[ext_resource type="AudioStream" uid="uid://burqigb784n8q" path="res://Audio/torch.mp3" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://cs8tsuh2qy5rx" path="res://Audio/lstep.mp3" id="5_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://damqdif3wxoxu" path="res://Audio/rstep.mp3" id="6_gymyn"]
+[ext_resource type="AudioStream" uid="uid://dshnwqq0pu3by" path="res://Audio/kill_screech.mp3" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://y271s2gmy3os" path="res://Audio/stay_idle_scare.mp3" id="10_tx1dd"]
+[ext_resource type="AudioStream" uid="uid://r2oj2256mnd4" path="res://Audio/key.mp3" id="11_gymyn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8xold"]
 radius = 0.36621094
@@ -13,20 +20,31 @@ radius = 0.366
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xold"]
 shader = ExtResource("2_cvnsp")
-shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/resolution = Vector2(640, 360)
 shader_parameter/scan_line_amount = 1.0
 shader_parameter/warp_amount = 0.5710000271225
 shader_parameter/noise_amount = 0.0390000018525
 shader_parameter/interference_amount = 1.0
 shader_parameter/grille_amount = 0.274000013015
 shader_parameter/grille_size = 2.5650000743375
-shader_parameter/vignette_amount = 0.6870000326325
+shader_parameter/vignette_amount = 2.0
 shader_parameter/vignette_intensity = 0.2410000114475
 shader_parameter/aberation_amount = 0.7970000378575
 shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.1100004327250002
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obyia"]
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+border_color = Color(0.6, 0.6, 0.6, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_8xold"]
+Label/styles/normal = SubResource("StyleBoxFlat_obyia")
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0c25"]
 font = ExtResource("3_vgqql")
@@ -259,12 +277,43 @@ offset_right = 118.285
 offset_bottom = 143.0
 scale = Vector2(0.01, 0.01)
 
-[node name="maincolor" type="ColorRect" parent="Camera/hud/Control" unique_id=1717963113]
-layout_mode = 0
-offset_left = 25.285
-offset_top = 150.0
-offset_right = 118.285
-offset_bottom = 243.0
+[node name="cursor_help" type="Label" parent="Camera/hud" unique_id=1681051447]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = 20.140015
+offset_right = 51.5
+offset_bottom = 61.140015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 40
+text = "PICK UP"
+
+[node name="paper_txt" type="Label" parent="Camera/hud" unique_id=2093959162]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -113.5
+offset_right = 150.0
+offset_bottom = 113.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8xold")
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 30
+text = "He needs your help. get the key from the other end. and then you can open this door."
+autowrap_mode = 2
 
 [node name="Control" type="Control" parent="Camera" unique_id=1800062090]
 layout_mode = 3
@@ -347,23 +396,21 @@ visible = false
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera/torch" unique_id=701435791]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15671569, -0.2676823, -0.24088615)
 light_energy = 0.4
-shadow_enabled = true
 spot_range = 8.0
 spot_angle = 30.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Camera/torch" unique_id=1521055669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15671569, -0.2676823, -0.24088615)
 light_energy = 0.4
-shadow_enabled = true
 spot_range = 8.0
 spot_angle = 5.888153
 
 [node name="SubViewport" type="SubViewport" parent="Camera" unique_id=1830598391]
-size = Vector2i(200, 200)
+size = Vector2i(100, 100)
 
 [node name="sub_camera" type="Camera3D" parent="Camera/SubViewport" unique_id=417891154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6994325, 0)
-fov = 45.604702
+fov = 9.03292
 
 [node name="scare" type="Node3D" parent="Camera" unique_id=171312094]
 transform = Transform3D(0.9992778, 0, 0.037998736, 0, 1, 0, -0.037998736, 0, 0.9992778, 0, -1.4674555, -0.49644864)
@@ -387,3 +434,32 @@ light_color = Color(1, 0.93, 0.93, 1)
 light_energy = 0.03
 light_size = 0.701
 omni_range = 0.245
+
+[node name="audios" type="Node" parent="." unique_id=82580073]
+
+[node name="Lstep" type="AudioStreamPlayer" parent="audios" unique_id=458390380]
+stream = ExtResource("5_tx1dd")
+
+[node name="Rstep" type="AudioStreamPlayer" parent="audios" unique_id=1338646390]
+stream = ExtResource("6_gymyn")
+
+[node name="Heartbeat" type="AudioStreamPlayer" parent="audios" unique_id=844304875]
+stream = ExtResource("5_8erm5")
+
+[node name="Torch" type="AudioStreamPlayer" parent="audios" unique_id=995481304]
+stream = ExtResource("5_fkybt")
+
+[node name="KillScreech" type="AudioStreamPlayer" parent="audios" unique_id=1738234201]
+stream = ExtResource("6_x3wgy")
+
+[node name="StayStill" type="AudioStreamPlayer" parent="audios" unique_id=482926858]
+stream = ExtResource("10_tx1dd")
+volume_db = -29.9
+
+[node name="Key" type="AudioStreamPlayer" parent="audios" unique_id=378189948]
+stream = ExtResource("11_gymyn")
+volume_db = -11.05
+
+[node name="fear" type="AudioStreamPlayer" parent="audios" unique_id=503562059]
+stream = ExtResource("5_8erm5")
+volume_db = -9.75

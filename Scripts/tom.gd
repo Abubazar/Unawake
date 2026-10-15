@@ -3,7 +3,7 @@ extends Area3D
 @onready var path_follow_3d: PathFollow3D = $".."
 @onready var rays: Node3D = $rays
 
-var follow_path = false
+var follow_path = true
 var stay_still = false
 func _ready() -> void:
 	pass # Replace with function body.

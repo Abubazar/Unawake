@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvqjqmrjm3flb"
-path.s3tc="res://.godot/imported/objects_Door_1_BaseColor.png-4aad616b351a347c5add2ff61d481e3f.s3tc.ctex"
+uid="uid://cm6s36th38bbs"
+path.s3tc="res://.godot/imported/paper.jpg-01b5262d9bab5bba206ba09546b0602b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "4a2d4ea29ae41b8d5263c76be00135d7"
-}
 
 [deps]
 
-source_file="res://Assets/objects_Door_1_BaseColor.png"
-dest_files=["res://.godot/imported/objects_Door_1_BaseColor.png-4aad616b351a347c5add2ff61d481e3f.s3tc.ctex"]
+source_file="res://Assets/paper.jpg"
+dest_files=["res://.godot/imported/paper.jpg-01b5262d9bab5bba206ba09546b0602b.s3tc.ctex"]
 
 [params]
 
