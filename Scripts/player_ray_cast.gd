@@ -9,6 +9,7 @@ extends RayCast3D
 
 var collision_body = null
 var scared = false
+var won = false
 
 var txt1 = "He needs your help. get the key from the other end. and then you can open this door."
 var txt2 = "Avoid the dark.. He doesnt like it.
@@ -35,7 +36,8 @@ func _process(delta: float) -> void:
 			if collision_body.name == "door2": cursor_help.text="OPEN DOOR"
 			if collision_body.name == "paper1": cursor_help.text="READ NOTE"
 			if collision_body.name == "paper2": cursor_help.text="READ NOTE"
-			cursor_help.show()
+			if not won:
+				cursor_help.show()
 			if Input.is_action_just_pressed("pick"):
 				if paper_txt.visible:
 					paper_txt.hide()
@@ -46,17 +48,21 @@ func _process(delta: float) -> void:
 					character_body_3d.holding_key=true
 					got_key = true
 					
-				if collision_body.name == "door2":
+				if collision_body.name == "door2" and not won:
 					character_body_3d.jumpscare()
+					won = true
 					
-				if collision_body.name == "door1" and got_key:
-					print("WELLCONEEEEEEEEEEEE")
+				if collision_body.name == "door1" and got_key and not won:
+					character_body_3d.win_game()
+					cursor_help.hide()
+					point.hide()
+					won = true
 					
-				if collision_body.name == "paper1":
+				if collision_body.name == "paper1" and not won:
 					paper_txt.text = txt1
 					paper_txt.show()
 					
-				if collision_body.name == "paper2":
+				if collision_body.name == "paper2" and not won:
 					paper_txt.text = txt2
 					paper_txt.show()
 		else:

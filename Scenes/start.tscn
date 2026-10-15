@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://byrw3csuhc1y4"]
+
+[ext_resource type="Texture2D" uid="uid://ch60pdthgowfr" path="res://Assets/headphones.svg" id="1_r48yj"]
+[ext_resource type="FontFile" uid="uid://b44drulw4svl" path="res://Assets/MotionControl-Bold.otf" id="2_5ogh5"]
+[ext_resource type="Script" uid="uid://bn6pjxmew0uvk" path="res://Scripts/start_button.gd" id="3_5ogh5"]
+
+[node name="Node2D" type="CanvasLayer" unique_id=2034695283]
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=663984642]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1156866434]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=328739030]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/CenterContainer" unique_id=1339812189]
+custom_minimum_size = Vector2(150, 150)
+custom_maximum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("1_r48yj")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=274650393]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ogh5")
+theme_override_font_sizes/font_size = 30
+text = "I recommend you play this game with headphones!
+
+WARNING: this game has some flashing lights and loud noiss.
+If these affect you, don't play..."
+horizontal_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer" unique_id=249276733]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer2" unique_id=562719587]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5ogh5")
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+script = ExtResource("3_5ogh5")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer2/Button" to="CenterContainer/VBoxContainer/CenterContainer2/Button" method="_on_pressed"]

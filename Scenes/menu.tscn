@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bjl0oswwsevlq"]
 
 [ext_resource type="FontFile" uid="uid://b44drulw4svl" path="res://Assets/MotionControl-Bold.otf" id="1_1rerr"]
-[ext_resource type="Shader" uid="uid://vbrgmihn6xqb" path="res://Scenes/vhs.gdshader" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://fvpnh4xy0g0m" path="res://Scripts/menu.gd" id="1_cayip"]
+[ext_resource type="Shader" uid="uid://dwt1mw2iaceyt" path="res://Scripts/ctr.gdshader" id="2_xhh6f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xold"]
 font = ExtResource("1_1rerr")
@@ -13,23 +14,33 @@ outline_color = Color(0.88, 0, 0.014666443, 0.42745098)
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_1rerr")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik584"]
+bg_color = Color(0.4626466, 0.41988623, 0.37577996, 1)
+
+[sub_resource type="Theme" id="Theme_8xold"]
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_1rerr")
+Label/styles/normal = SubResource("StyleBoxFlat_ik584")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xhh6f"]
-shader = ExtResource("1_xhh6f")
-shader_parameter/vhs_resolution = Vector2(320, 240)
-shader_parameter/samples = 2
-shader_parameter/crease_noise = 1.0
-shader_parameter/crease_opacity = 0.5
-shader_parameter/filter_intensity = 0.1
-shader_parameter/tape_crease_smear = 0.2
-shader_parameter/tape_crease_intensity = 0.2
-shader_parameter/tape_crease_jitter = 0.1
-shader_parameter/tape_crease_speed = 0.5
-shader_parameter/tape_crease_discoloration = 1.0
-shader_parameter/bottom_border_thickness = 6.0
-shader_parameter/bottom_border_jitter = 6.0
-shader_parameter/noise_intensity = 0.1
+shader = ExtResource("2_xhh6f")
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.30000001425
+shader_parameter/noise_amount = 0.07600000361
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.18000000855
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 1.1110000527725
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 1.0
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=676748097]
+script = ExtResource("1_cayip")
 
 [node name="Control" type="Control" parent="." unique_id=277313654]
 layout_mode = 3
@@ -38,44 +49,81 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="Label" type="Label" parent="Control" unique_id=606042844]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1331998090]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -217.5
-offset_top = 90.0
+offset_top = -176.0
 offset_right = 217.5
-offset_bottom = 231.0
+offset_bottom = 176.0
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=606042844]
+layout_mode = 2
 text = "UnAwake"
 label_settings = SubResource("LabelSettings_8xold")
 
-[node name="list" type="VBoxContainer" parent="Control" unique_id=1633166407]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -155.5
-offset_top = -368.0
-offset_right = 155.5
-offset_bottom = -240.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="list" type="VBoxContainer" parent="Control/VBoxContainer" unique_id=1633166407]
+layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Button" type="Button" parent="Control/list" unique_id=1069071239]
+[node name="play_btn" type="Button" parent="Control/VBoxContainer/list" unique_id=1069071239]
 layout_mode = 2
 theme = SubResource("Theme_obyia")
-text = "Play the Video.. Game"
+text = "  Play the Video.. Game  "
 
-[node name="Button2" type="Button" parent="Control/list" unique_id=2020214530]
+[node name="exit_btn" type="Button" parent="Control/VBoxContainer/list" unique_id=2020214530]
 layout_mode = 2
 theme = SubResource("Theme_obyia")
-text = "Whimp out and exit"
+text = "Exit (Whimp)"
+
+[node name="info_btn" type="Button" parent="Control/VBoxContainer/list" unique_id=449125066]
+layout_mode = 2
+theme = SubResource("Theme_obyia")
+text = "Game Info"
+
+[node name="infomation" type="Label" parent="Control" unique_id=529786598]
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -322.5
+offset_right = 250.0
+offset_bottom = 322.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8xold")
+text = "Hello there. This is a lost tape. Control through arrow keys or WASD.
+Left Click to interact with interactales.
+Use your torch light with Right Click."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/infomation" unique_id=412894412]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+
+[node name="back_btn" type="Button" parent="Control/infomation/MarginContainer" unique_id=1852988965]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1rerr")
+theme_override_font_sizes/font_size = 35
+text = "Back"
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=2024698957]
 material = SubResource("ShaderMaterial_xhh6f")
@@ -85,3 +133,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Control/VBoxContainer/list/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/list/exit_btn" to="." method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/list/info_btn" to="." method="_on_info_btn_pressed"]
+[connection signal="pressed" from="Control/infomation/MarginContainer/back_btn" to="." method="_on_back_btn_pressed"]

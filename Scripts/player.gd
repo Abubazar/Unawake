@@ -17,6 +17,11 @@ extends CharacterBody3D
 
 
 
+@onready var endscreen: ColorRect = $"Camera/2d/endscreen"
+@onready var teller: Label = $"Camera/2d/endscreen/CenterContainer/VBoxContainer/teller"
+
+
+
 @onready var torch_aud: AudioStreamPlayer = $audios/Torch
 @onready var kill_screech: AudioStreamPlayer = $audios/KillScreech
 @onready var stay_still: AudioStreamPlayer = $audios/StayStill
@@ -25,6 +30,7 @@ extends CharacterBody3D
 @onready var rstep: AudioStreamPlayer = $audios/Rstep
 @onready var fear: AudioStreamPlayer = $audios/fear
 
+@onready var fade: ColorRect = $Camera/hud/fade
 
 const SPEED = 2
 
@@ -64,6 +70,9 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	trap_mouse = true
 	$MeshInstance3D.hide()
+	fade.show()
+	var tween = create_tween()
+	tween.tween_property(fade,"modulate:a",0,2)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -177,3 +186,23 @@ func footsteps(walking):
 			lstep.play()
 			last_step="l"
 		
+
+func end_game():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	kill_screech.stop()
+	heartbeat.stop()
+	fear.stop()
+	endscreen.show()
+	teller.text = "Something went wrong"
+	
+	
+func win_game():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	endscreen.show()
+	teller.text = "You won the game buddy!"
+	
+
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

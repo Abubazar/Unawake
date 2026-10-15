@@ -208,6 +208,20 @@ tracks/2/keys = {
 "points": PackedFloat32Array(-0.023836523, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0, 0.31128514, -0.25, 0, 0.25, 0, 0.30931962, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.121206634, 0.1878733, 0.25028384, 0.3169505, 0.37149048, 0.43815714, 0.5021418, 0.56880844, 0.6233484, 0.6900151, 0.7524256, 0.8190923, 0.87363225, 0.9402989, 1.0026045, 1.0692712, 1.1238111, 1.1904778, 1.2528883, 1.319555, 1.374095, 1.4407616, 1.501598, 1.5682647, 1.6228046, 1.6894712, 1.7518818, 1.8185484, 1.8730885, 1.9397552)
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_game"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f1ek2"]
 _data = {
@@ -232,6 +246,40 @@ mesh = SubResource("CapsuleMesh_8xold")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6994325, 0)
 
 [node name="2d" type="CanvasLayer" parent="Camera" unique_id=1154320561]
+
+[node name="endscreen" type="ColorRect" parent="Camera/2d" unique_id=589197593]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.446777, 0.44677705, 0.44677705, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Camera/2d/endscreen" unique_id=1575010470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/2d/endscreen/CenterContainer" unique_id=788464816]
+layout_mode = 2
+
+[node name="teller" type="Label" parent="Camera/2d/endscreen/CenterContainer/VBoxContainer" unique_id=1207907002]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 50
+text = "Something went wrong"
+
+[node name="Button" type="Button" parent="Camera/2d/endscreen/CenterContainer/VBoxContainer" unique_id=1692846512]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vgqql")
+theme_override_font_sizes/font_size = 40
+text = "Go back"
 
 [node name="crt" type="ColorRect" parent="Camera/2d" unique_id=1259013995]
 material = SubResource("ShaderMaterial_8xold")
@@ -314,6 +362,16 @@ theme_override_fonts/font = ExtResource("3_vgqql")
 theme_override_font_sizes/font_size = 30
 text = "He needs your help. get the key from the other end. and then you can open this door."
 autowrap_mode = 2
+
+[node name="fade" type="ColorRect" parent="Camera/hud" unique_id=2056812398]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" parent="Camera" unique_id=1800062090]
 layout_mode = 3
@@ -463,3 +521,5 @@ volume_db = -11.05
 [node name="fear" type="AudioStreamPlayer" parent="audios" unique_id=503562059]
 stream = ExtResource("5_8erm5")
 volume_db = -9.75
+
+[connection signal="pressed" from="Camera/2d/endscreen/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
