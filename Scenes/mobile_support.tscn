@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bjiyo0qotdgv7"]
+
+[ext_resource type="Script" uid="uid://c2d0l7mtd6le7" path="res://Scripts/mobile_support.gd" id="1_0lk11"]
+[ext_resource type="Theme" uid="uid://dcdpoaqxps31j" path="res://Assets/mobile_buttons.tres" id="2_odj30"]
+[ext_resource type="Texture2D" uid="uid://bifdbis5i8hg5" path="res://Assets/torch.svg" id="3_h5muh"]
+[ext_resource type="Texture2D" uid="uid://bt7w3lnbcpcqc" path="res://Assets/touch.svg" id="4_4le2h"]
+
+[node name="mobil_supprt" type="CanvasLayer" unique_id=1390514214]
+script = ExtResource("1_0lk11")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1297321774]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 125.0
+offset_top = -154.0
+offset_right = 165.0
+offset_bottom = -114.0
+grow_vertical = 0
+joystick_size = 180.0
+tip_size = 65.0
+action_left = &"left"
+action_right = &"right"
+action_up = &"up"
+action_down = &"down"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2090349277]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="torch" type="Button" parent="." unique_id=952874893]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -185.0
+offset_right = -89.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_odj30")
+icon = ExtResource("3_h5muh")
+expand_icon = true
+
+[node name="pick" type="Button" parent="." unique_id=1883254615]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -305.0
+offset_top = -280.0
+offset_right = -212.0
+offset_bottom = -187.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_odj30")
+icon = ExtResource("4_4le2h")
+expand_icon = true
+
+[connection signal="pressed" from="torch" to="." method="_on_torch_pressed"]
+[connection signal="pressed" from="pick" to="." method="_on_pick_pressed"]

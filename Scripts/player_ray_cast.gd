@@ -41,6 +41,8 @@ func _process(delta: float) -> void:
 			if Input.is_action_just_pressed("pick"):
 				if paper_txt.visible:
 					paper_txt.hide()
+				else:
+					paper_txt.show()
 					return
 				if collision_body.name == "key":
 					key_aud.play()

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3lws0wdkbnie"
 path.s3tc="res://.godot/imported/Exit_sign_Base_color.png-250b7f0a01fecd1242fd9a01378a532f.s3tc.ctex"
+path.etc2="res://.godot/imported/Exit_sign_Base_color.png-250b7f0a01fecd1242fd9a01378a532f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/map/Exit_sign_Base_color.png"
-dest_files=["res://.godot/imported/Exit_sign_Base_color.png-250b7f0a01fecd1242fd9a01378a532f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Exit_sign_Base_color.png-250b7f0a01fecd1242fd9a01378a532f.s3tc.ctex", "res://.godot/imported/Exit_sign_Base_color.png-250b7f0a01fecd1242fd9a01378a532f.etc2.ctex"]
 
 [params]
 

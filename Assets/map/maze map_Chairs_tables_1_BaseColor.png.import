@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://fke0w2vmik0d"
 path.s3tc="res://.godot/imported/maze map_Chairs_tables_1_BaseColor.png-aaa773537cdd96cc3db3bccda647d879.s3tc.ctex"
+path.etc2="res://.godot/imported/maze map_Chairs_tables_1_BaseColor.png-aaa773537cdd96cc3db3bccda647d879.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/map/maze map_Chairs_tables_1_BaseColor.png"
-dest_files=["res://.godot/imported/maze map_Chairs_tables_1_BaseColor.png-aaa773537cdd96cc3db3bccda647d879.s3tc.ctex"]
+dest_files=["res://.godot/imported/maze map_Chairs_tables_1_BaseColor.png-aaa773537cdd96cc3db3bccda647d879.s3tc.ctex", "res://.godot/imported/maze map_Chairs_tables_1_BaseColor.png-aaa773537cdd96cc3db3bccda647d879.etc2.ctex"]
 
 [params]
 

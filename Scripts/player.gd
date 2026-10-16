@@ -20,6 +20,7 @@ extends CharacterBody3D
 @onready var endscreen: ColorRect = $"Camera/2d/endscreen"
 @onready var teller: Label = $"Camera/2d/endscreen/CenterContainer/VBoxContainer/teller"
 
+@onready var mobil_supprt: CanvasLayer = $Camera/mobil_supprt
 
 
 @onready var torch_aud: AudioStreamPlayer = $audios/Torch
@@ -34,7 +35,9 @@ extends CharacterBody3D
 
 const SPEED = 2
 
-@export var sensitivity := 0.004
+var sensitivity := 0.004
+var touch_sensitivity := 0.005
+var look_touch_index := -1
 
 var trap_mouse = true
 var t_bob = 0.0
@@ -73,17 +76,45 @@ func _ready() -> void:
 	fade.show()
 	var tween = create_tween()
 	tween.tween_property(fade,"modulate:a",0,2)
-
+	if Glob.android:
+		mobil_supprt.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		mobil_supprt.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * sensitivity)
-		camera.rotate_x(-event.relative.y * sensitivity)
-		camera.rotation.x = clamp(
-			camera.rotation.x,
-			deg_to_rad(-40),
-			deg_to_rad(40)
-		)
+	# PC mouse controls
+	if event is InputEventMouseMotion and not Glob.android:
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			rotate_view(event.relative)
+
+	# Detect screen touches
+	elif event is InputEventScreenTouch and Glob.android:
+		if event.pressed:
+			# Only allow looking with the right half of the screen
+			if event.position.x > get_viewport().get_visible_rect().size.x / 2:
+				look_touch_index = event.index
+		else:
+			# Stop looking when the finger is released
+			if event.index == look_touch_index:
+				look_touch_index = -1
+
+	# Detect swiping
+	elif event is InputEventScreenDrag:
+		if event.index == look_touch_index:
+			rotate_view(event.relative)
+
+
+func rotate_view(relative: Vector2) -> void:
+	rotate_y(-relative.x * sensitivity)
+
+	camera.rotate_x(-relative.y * sensitivity)
+
+	camera.rotation.x = clamp(
+		camera.rotation.x,
+		deg_to_rad(-40),
+		deg_to_rad(40)
+	)
 
 
 func _physics_process(delta: float) -> void:

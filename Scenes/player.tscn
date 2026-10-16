@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://b44drulw4svl" path="res://Assets/MotionControl-Bold.otf" id="3_vgqql"]
 [ext_resource type="AudioStream" uid="uid://c7k4ax5vonn2i" path="res://Audio/heartbeat.mp3" id="5_8erm5"]
 [ext_resource type="AudioStream" uid="uid://burqigb784n8q" path="res://Audio/torch.mp3" id="5_fkybt"]
+[ext_resource type="PackedScene" uid="uid://bjiyo0qotdgv7" path="res://Scenes/mobile_support.tscn" id="5_pu2lt"]
 [ext_resource type="AudioStream" uid="uid://cs8tsuh2qy5rx" path="res://Audio/lstep.mp3" id="5_tx1dd"]
 [ext_resource type="AudioStream" uid="uid://damqdif3wxoxu" path="res://Audio/rstep.mp3" id="6_gymyn"]
 [ext_resource type="AudioStream" uid="uid://dshnwqq0pu3by" path="res://Audio/kill_screech.mp3" id="6_x3wgy"]
@@ -384,14 +385,10 @@ mouse_filter = 2
 
 [node name="container" type="ColorRect" parent="Camera/Control" unique_id=836014462]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 71.0
-offset_top = -135.0
-offset_right = 141.0
-offset_bottom = -99.16669
-grow_vertical = 0
+offset_left = 50.0
+offset_top = 130.0
+offset_right = 120.0
+offset_bottom = 165.83331
 scale = Vector2(1.2, 1.2)
 mouse_filter = 2
 color = Color(0.14044744, 0.14044744, 0.14044744, 1)
@@ -492,6 +489,8 @@ light_color = Color(1, 0.93, 0.93, 1)
 light_energy = 0.03
 light_size = 0.701
 omni_range = 0.245
+
+[node name="mobil_supprt" parent="Camera" unique_id=1390514214 instance=ExtResource("5_pu2lt")]
 
 [node name="audios" type="Node" parent="." unique_id=82580073]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://vr5q2rgl46dm"
 path.s3tc="res://.godot/imported/maze map_Bed_Metallic.png-a921ed8a8569919c3343473a15a93673.s3tc.ctex"
+path.etc2="res://.godot/imported/maze map_Bed_Metallic.png-a921ed8a8569919c3343473a15a93673.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/map/maze map_Bed_Metallic.png"
-dest_files=["res://.godot/imported/maze map_Bed_Metallic.png-a921ed8a8569919c3343473a15a93673.s3tc.ctex"]
+dest_files=["res://.godot/imported/maze map_Bed_Metallic.png-a921ed8a8569919c3343473a15a93673.s3tc.ctex", "res://.godot/imported/maze map_Bed_Metallic.png-a921ed8a8569919c3343473a15a93673.etc2.ctex"]
 
 [params]
 

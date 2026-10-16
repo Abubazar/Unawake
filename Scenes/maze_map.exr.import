@@ -4,15 +4,16 @@ importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://dorwrciqtifpi"
 path.bptc="res://.godot/imported/maze_map.exr-0e7b5af72d4efeeb90e01ef166488bf3.bptc.ctexarray"
+path.astc="res://.godot/imported/maze_map.exr-0e7b5af72d4efeeb90e01ef166488bf3.astc.ctexarray"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Scenes/maze_map.exr"
-dest_files=["res://.godot/imported/maze_map.exr-0e7b5af72d4efeeb90e01ef166488bf3.bptc.ctexarray"]
+dest_files=["res://.godot/imported/maze_map.exr-0e7b5af72d4efeeb90e01ef166488bf3.bptc.ctexarray", "res://.godot/imported/maze_map.exr-0e7b5af72d4efeeb90e01ef166488bf3.astc.ctexarray"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bckkn4tdraic8"
 path.s3tc="res://.godot/imported/maze map_light.png-7641a5ef8425f798fe8b8331ae857926.s3tc.ctex"
+path.etc2="res://.godot/imported/maze map_light.png-7641a5ef8425f798fe8b8331ae857926.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/map/maze map_light.png"
-dest_files=["res://.godot/imported/maze map_light.png-7641a5ef8425f798fe8b8331ae857926.s3tc.ctex"]
+dest_files=["res://.godot/imported/maze map_light.png-7641a5ef8425f798fe8b8331ae857926.s3tc.ctex", "res://.godot/imported/maze map_light.png-7641a5ef8425f798fe8b8331ae857926.etc2.ctex"]
 
 [params]
 

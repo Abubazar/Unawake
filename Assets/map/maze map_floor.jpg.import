@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bs86xmoqijx81"
 path.s3tc="res://.godot/imported/maze map_floor.jpg-46c128f369bc1ac98de0da78a42009e9.s3tc.ctex"
+path.etc2="res://.godot/imported/maze map_floor.jpg-46c128f369bc1ac98de0da78a42009e9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/map/maze map_floor.jpg"
-dest_files=["res://.godot/imported/maze map_floor.jpg-46c128f369bc1ac98de0da78a42009e9.s3tc.ctex"]
+dest_files=["res://.godot/imported/maze map_floor.jpg-46c128f369bc1ac98de0da78a42009e9.s3tc.ctex", "res://.godot/imported/maze map_floor.jpg-46c128f369bc1ac98de0da78a42009e9.etc2.ctex"]
 
 [params]
 
