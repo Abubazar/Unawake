@@ -6,7 +6,6 @@ I used blender to design the map. Taking inspiration from the backrooms. i also 
 
 And Yes, there's Lore!
 
-https://github.com/Abubazar/Unawake/blob/main/README.md
 The main logic of the game is quite simple; basic characterbody controller with look controls ocnnected to the camera.
 ![godot image](https://github.com/Abubazar/Unawake/blob/main/Screenshot%20(186).png?raw=true)
 I designed the map in blender and imported it to godot, created a collision mesh for it. The phantom actually follows a pre-defined path. and instead of a field of view, i just attached 5 raycasts to the body. not conventional but idk how to properly create a fov. and this was faster.
